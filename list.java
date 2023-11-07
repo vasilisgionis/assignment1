@@ -127,7 +127,8 @@ class List {
 	        System.out.println("Filtered list:");
 	        fl=list.filter(list2);
 	        fl.print();
-	        
+		
+	        insertionSort(list);
 	}
 }
 

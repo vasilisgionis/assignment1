@@ -60,8 +60,8 @@ class List {
 	}
 
 	public List filter(List list) {
-		List filterlist = new List();
-		Node thisnode=this.head.next;
+		List filterlist = new List(); //δημιουργω νεα λιστα η οποια θα περιεχει τα κοινα στοιχεια μεταξυ της this και της list
+		Node thisnode=this.head.next; //για να ξεκινησω την διαδικασια 
 		while (thisnode!=this.tail){
 			Node listnode=list.head.next;
 			while (listnode!=list.tail) {
@@ -77,17 +77,27 @@ class List {
 		return filterlist;
 	}
 
-	//public List mergeWith(List list) {
-		/* your code here */
-	//}
+	public List mergeWith(List list) {
+		List mergedlist, copiedthis, copiedlist = new List();
+		copiedthis=this.copy(); copiedlist=list.copy();
+		copiedthis.print(); copiedlist.print();
+		Node current = this.head.next;
+	}
 
 	//public List largest(int k) {
 		/* your code here */
 	//}
 
-	//public static void insertionSort(List list) {
+	public static void insertionSort(List list) {
+		Node current = list.head.next;
+		int length=0;
+		while (current!=list.tail){
+			length++;
+			current=current.next;
+		}
+			System.out.println(length);
 		/* your code here */
-	//}
+	}
 
 	public static void main(String[] args) {
 		    List list2 = new List();

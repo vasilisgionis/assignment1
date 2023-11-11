@@ -1,3 +1,4 @@
+
 import java.util.Random;
 
 class Node {
@@ -60,28 +61,30 @@ class List {
 	}
 
 	public List filter(List list) {
-		List filterlist = new List(); //δημιουργω νεα λιστα η οποια θα περιεχει τα κοινα στοιχεια μεταξυ της this και της list
-		Node thisnode=this.head.next; //για να ξεκινησω την διαδικασια 
+		List filterlist = new List(); 
+		Node thisnode=this.head.next;
 		while (thisnode!=this.tail){
 			Node listnode=list.head.next;
 			while (listnode!=list.tail) {
 				if (thisnode.key()==listnode.key()) {
 					filterlist.insertFirst(thisnode.key());
-					break;
-				}else{
-					listnode = listnode.next;
 				}
+
+				listnode = listnode.next;
+			
 			}
 			thisnode = thisnode.next;
 		}
 		return filterlist;
 	}
 
-	public List mergeWith(List list) {
+	public void mergeWith(List list) {
 		List mergedlist, copiedthis, copiedlist = new List();
 		copiedthis=this.copy(); copiedlist=list.copy();
 		copiedthis.print(); copiedlist.print();
 		Node current = this.head.next;
+		
+
 	}
 
 	//public List largest(int k) {
@@ -93,9 +96,22 @@ class List {
 		int length=0;
 		while (current!=list.tail){
 			length++;
+			current.print("  " ,"  ");
 			current=current.next;
 		}
 			System.out.println(length);
+			
+		Node currentInsertion = list.head.next;
+		for (int index=1; index<=length; index++){ //με αυτην την λουπα θα κανω οσες συγκρισεις οσα ειναι και τα nodes της λιστας για να ταξινομηθουν ολα 
+			Node temp = currentInsertion;
+			Node checking = currentInsertion.prev; //φτιαχνω αυτο το node για συγκρισεις με τα προηγουμενα node keys απο αυτον που συγκρινω
+			while(checking!=list.head.prev && currentInsertion.key() <= checking.key()){  //συγκρινω αμα το παρων node ειναι μικροτερο απο το πορηγουμενο του 
+				checking=currentInsertion;
+				checking=temp;//κανω τις απαραιτητες πραξεις για να ολισθησω την λιστα καθε φορα που ο κομβος που ελεγχω ειναι μικροτερος απο τον προηγμουμενο 
+					
+			}
+			checking.next.key(temp.key());
+		}
 		/* your code here */
 	}
 
@@ -112,7 +128,7 @@ class List {
 	       }
 	       
 	       //Insert elements into the list2
-	       for (int i=0; i<=4; i++) {
+	       for (int i=0; i<=6; i++) {
 				int random = rand.nextInt(10);
 		    	   list2.insertFirst(random);
 		       }
@@ -127,8 +143,8 @@ class List {
 	        System.out.println("Filtered list:");
 	        fl=list.filter(list2);
 	        fl.print();
-		
-	        insertionSort(list);
+
+			insertionSort(list);
+	        
 	}
 }
-

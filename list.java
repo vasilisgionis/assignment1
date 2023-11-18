@@ -60,12 +60,12 @@ class List {
 		System.out.println(" ]");
 	}
 
-	public List filter(List list) {
-		List filterlist = new List(); 
-		Node thisnode=this.head.next;
-		while (thisnode!=this.tail){
-			Node listnode=list.head.next;
-			while (listnode!=list.tail) {
+	public List filter(List list) { //η σκεψη πισω απο την υλοποιηση της filter ειναι η συνεχομενη συγκριση των keys των 2 λιστων και η εκγχωρηση τους σε μια νεα λιστα με ονομα filterlist 
+		List filterlist = new List(); //δημιουργω την λιστα filterlist 
+		Node thisnode=this.head.next; //και δημιουργω τον node ο οποιος παιρνει την τιμη του this.next.head και μεταγενεστερα τις επομενες τιμες των επομενων nodes της λιστας this  
+		while (thisnode!=null){ //ξεκιναω μια λουπα οπου εχω ως condition το thisnode node να μην ειναι κενο (πραγμα το οποιο πραγματοποιειται οταν φτασει το node μετα το tail) 
+			Node listnode=list.head.next; // δημιουργω εναν επιπλεον node listnode ο οποιος θα παιρνει τις τιμες των επομενων nodes της λιστας list
+			while (listnode!=null) {
 				if (thisnode.key()==listnode.key()) {
 					filterlist.insertFirst(thisnode.key());
 				}
